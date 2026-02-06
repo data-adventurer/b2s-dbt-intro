@@ -6,4 +6,22 @@ sources:
     schema: raw_jaffle_shop
     tables:
       - name: orders
+        config:
+          freshness:
+            warn_after:
+              count: 1
+              period: day
+            error_after:
+              count: 2
+              period: day
+          loaded_at_field: _etl_loaded_at
+      - name: customers
 
+  - name: stripe
+    database: demo_db
+    schema: raw_stripe
+    tables:
+      - name: payment
+        columns:
+        - name: paymentmethod
+configdescription
